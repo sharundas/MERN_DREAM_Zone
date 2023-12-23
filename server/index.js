@@ -1,7 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import authRouter from './routes/auth.route.js'
+import authRouter from './routes/auth.route.js';
+import errorMiddleware from './middleware/middleware.js';
 
 
 dotenv.config();
@@ -23,6 +24,8 @@ const app = express();
 app.use(express.json());
 
 
+
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
@@ -31,6 +34,9 @@ app.listen(3000, () => {
 
 app.use('/api/auth', authRouter);
 
+
+
+app.use(errorMiddleware);
 
 
 // mern_dream_zone - username
