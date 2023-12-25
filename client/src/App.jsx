@@ -13,7 +13,10 @@ function App() {
   return (
    
     <BrowserRouter>
-         <Header />
+   
+    <Header />
+    
+        
 
      <Routes>
 
@@ -24,6 +27,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/news' element={<News />} />
         </Routes>
+       
     </BrowserRouter>
       
   )
