@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import {  FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { navLinks } from "../constants";
 import Close from "../assets/close.svg";
 import Menu from "../assets/menu.svg";
 import SignIn from "../pages/SignIn";
+import { useSelector } from 'react-redux';
+
 
 export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
+
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   return (
@@ -88,13 +92,22 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              <Link to="/sign-in">
-                <li onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }} className="text-slate-100 font-medium hover:text-blue- cursor-pointer text-[18px] mb-2 ">
-                  SignIn
-                </li>
+              <Link to="/profile">
+                {currentUser ? (
+                  <img
+                    className="rounded-full h-7 w-7 object-cover"
+                    src={currentUser.avatar}
+                    alt="profile"
+                  />
+                ) : (
+                  <li
+                    onClick={() => {
+                      setToggle(!toggle);
+                      setActive(nav.title);
+                    }}
+                    className="text-slate-100 font-medium hover:text-blue- cursor-pointer text-[18px] mb-2 "
+                  ></li>
+                )}
               </Link>
               <form className="bg-slate-100 p-3 rounded-lg flex items-center justify-between">
                 <input
