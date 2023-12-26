@@ -5,8 +5,7 @@ import { navLinks } from "../constants";
 import Close from "../assets/close.svg";
 import Menu from "../assets/menu.svg";
 import SignIn from "../pages/SignIn";
-import { useSelector } from 'react-redux';
-
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
@@ -54,9 +53,17 @@ export default function Header() {
             </li>
           ))}
 
-          <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">
-            <Link to="/sign-in">SignIn</Link>
-          </li>
+          <Link to="/profile">
+            {currentUser ? (
+              <img
+                className="rounded-full h-7 w-7 object-cover"
+                src={currentUser.avatar}
+                alt="profile"
+              />
+            ) : (
+              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3"></li>
+            )}
+          </Link>
         </ul>
 
         {/* Mobile View */}
@@ -96,6 +103,7 @@ export default function Header() {
                 {currentUser ? (
                   <img
                     className="rounded-full h-7 w-7 object-cover"
+                    onClick={() => setToggle(!toggle)}
                     src={currentUser.avatar}
                     alt="profile"
                   />
