@@ -13,7 +13,10 @@ export default function Header() {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   return (
-    <nav className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 ">
+    <nav  onClick={() => {
+      setToggle(!toggle);
+      setActive(nav.title);
+    }} className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 ">
       <div className="w-full flex justify-between items-center max-w-[1440px] mx-auto">
         <Link to="/">
           <h1 className="font-bold text-[24px] sm:text-xl ">
@@ -68,7 +71,7 @@ export default function Header() {
 
         {/* Mobile View */}
 
-        <div className="md:hidden flex  justify-start items-center">
+        <div className="md:hidden flex  justify-start items-center" >
           <img
             src={toggle ? Close : Menu}
             className="w-[28px] h-[28px] object-contain cursor-pointer z-30"
