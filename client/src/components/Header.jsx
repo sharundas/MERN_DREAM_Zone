@@ -61,7 +61,7 @@ export default function Header() {
                 alt="profile"
               />
             ) : (
-              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3"></li>
+              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">signin</li>
             )}
           </Link>
         </ul>
