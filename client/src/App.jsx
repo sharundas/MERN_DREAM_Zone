@@ -14,6 +14,7 @@ import Newsletter from './components/Newsletter';
 import Premium from './components/Premium';
 import Timelines from './components/Timeline';
 import ImageGrid from './components/ImageGrid';
+import UpdateListing from './pages/UpdateListing';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route element={<PrivateRoute />}>
         <Route path='/profile' element={<Profile />} />
         <Route path='/create-listing' element={<CreateListing />} />
+        <Route path='/update-listing/:listingId' element={<UpdateListing />} />
 
         </Route>
         <Route path='/news' element={<News />} />
