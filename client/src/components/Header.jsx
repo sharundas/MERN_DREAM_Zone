@@ -14,7 +14,7 @@ export default function Header() {
   const [toggle, setToggle] = useState(false);
   return (
     <nav  onClick={() => {
-      setToggle(!toggle);
+    
       setActive(nav.title);
     }} className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 ">
       <div className="w-full flex justify-between items-center max-w-[1440px] mx-auto">
@@ -32,7 +32,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent focus:outline-none w-24 sm:w-48 lg:w-80 "
+            className="bg-transparent focus:outline-none focus:ring   w-24 sm:w-48 lg:w-80 "
           />
           <button>
             <FaSearch className="text-slate-600" />
@@ -136,4 +136,9 @@ export default function Header() {
       </div>
     </nav>
   );
+
+
 }
+
+
+

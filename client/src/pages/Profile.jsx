@@ -249,7 +249,7 @@ export default function Profile() {
       <p className='text-green-700 mt-5'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
-      <button onClick={handleShowListings} className='text-green-700 w-full'>
+      <button onClick={handleShowListings} className='text-white text-lg bg-green-700 p-3 w-full rounded-lg hover:opacity-95 cursor-pointer'>
         Show Listings
       </button>
       <p className='text-red-700 mt-5'>

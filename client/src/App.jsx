@@ -8,6 +8,12 @@ import Header from './components/Header';
 import News from './pages/News';
 import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing';
+import Test from './pages/test';
+import Footers from './components/Footer';
+import Newsletter from './components/Newsletter';
+import Premium from './components/Premium';
+import Timelines from './components/Timeline';
+import ImageGrid from './components/ImageGrid';
 
 
 function App() {
@@ -32,10 +38,19 @@ function App() {
 
         </Route>
         <Route path='/news' element={<News />} />
+        <Route path='/test' element={<Test />} />
 
         </Routes>
+        
+       
+        <Newsletter />
+        <ImageGrid />
+        <Timelines />
+        {/* <Premium /> */}
+        <Footers />
        
     </BrowserRouter>
+   
       
   )
 }
