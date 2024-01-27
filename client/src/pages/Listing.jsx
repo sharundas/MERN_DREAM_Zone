@@ -14,12 +14,14 @@ import {
 import { Button, Spinner } from "flowbite-react";
 import { Alert,Badge} from "flowbite-react";
 
-
+import Contact from "../components/Contact";
 
 export default function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [contact, setContact] = useState(false)
+
   const params = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
@@ -119,11 +121,12 @@ export default function Listing() {
               <FaChair className='text-lg' />
               {listing.furnished ? 'Furnished': 'UnFurnished'}
               </li>
-              {currentUser && listing.userRef !== currentUser._id && !contact && (
-                <button className="bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 p-3">
+              {currentUser && listing.userRef !== currentUser._id && !contact &&  (
+                <button onClick={()=> setContact(true)} className="bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 p-3">
                   Contact the Owner
                 </button>
               )}
+              {contact && <Contact listing={listing} />}
             </ul>
           </div>
         </div>
