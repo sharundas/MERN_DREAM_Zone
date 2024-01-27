@@ -13,10 +13,12 @@ export default function Header() {
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   return (
-    <nav  onClick={() => {
-    
-      setActive(nav.title);
-    }} className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 ">
+    <nav
+      onClick={() => {
+        setActive(nav.title);
+      }}
+      className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 "
+    >
       <div className="w-full flex justify-between items-center max-w-[1440px] mx-auto">
         <Link to="/">
           <h1 className="font-bold text-[24px] sm:text-xl ">
@@ -34,6 +36,7 @@ export default function Header() {
             placeholder="Search..."
             className="bg-transparent focus:outline-none focus:ring   w-24 sm:w-48 lg:w-80 "
           />
+
           <button>
             <FaSearch className="text-slate-600" />
           </button>
@@ -64,14 +67,16 @@ export default function Header() {
                 alt="profile"
               />
             ) : (
-              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">signin</li>
+              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">
+                signin
+              </li>
             )}
           </Link>
         </ul>
 
         {/* Mobile View */}
 
-        <div className="md:hidden flex  justify-start items-center" >
+        <div className="md:hidden flex  justify-start items-center">
           <img
             src={toggle ? Close : Menu}
             className="w-[28px] h-[28px] object-contain cursor-pointer z-30"
@@ -136,9 +141,4 @@ export default function Header() {
       </div>
     </nav>
   );
-
-
 }
-
-
-
