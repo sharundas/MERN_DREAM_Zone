@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { navLinks } from "../constants";
 import Close from "../assets/close.svg";
 import Menu from "../assets/menu.svg";
@@ -9,9 +9,28 @@ import { useSelector } from "react-redux";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const HandleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
+
   return (
     <nav
       onClick={() => {
@@ -30,11 +49,16 @@ export default function Header() {
           </h1>
         </Link>
 
-        <form className="md:flex hidden bg-slate-100 p-3 rounded-lg  items-center">
+        <form
+          onSubmit={HandleSubmit}
+          className="md:flex hidden bg-slate-100 p-3 rounded-lg  items-center"
+        >
           <input
             type="text"
             placeholder="Search..."
             className="bg-transparent focus:outline-none focus:ring   w-24 sm:w-48 lg:w-80 "
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
 
           <button>
