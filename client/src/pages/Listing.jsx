@@ -15,6 +15,7 @@ import { Button, Spinner } from "flowbite-react";
 import { Alert,Badge} from "flowbite-react";
 
 import Contact from "../components/Contact";
+import CheckOut from "../components/CheckOut";
 
 export default function Listing() {
   const [listing, setListing] = useState(null);
@@ -125,10 +126,12 @@ export default function Listing() {
                 <button onClick={()=> setContact(true)} className="bg-blue-700 text-white rounded-lg uppercase hover:opacity-95 p-3">
                   Contact the Owner
                 </button>
+                
               )}
               {contact && <Contact listing={listing} />}
             </ul>
           </div>
+          <CheckOut />
         </div>
       )}
     </main>
