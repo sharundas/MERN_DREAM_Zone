@@ -6,6 +6,7 @@ import Close from "../assets/close.svg";
 import Menu from "../assets/menu.svg";
 import SignIn from "../pages/SignIn";
 import { useSelector } from "react-redux";
+import { Button, Tooltip } from "flowbite-react";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
@@ -56,7 +57,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent focus:outline-none focus:ring   w-24 sm:w-48 lg:w-80 "
+            className=" focus:outline-none focus:ring  w-24 sm:w-48 lg:w-80"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -82,25 +83,56 @@ export default function Header() {
               </Link>
             </li>
           ))}
-
-          <Link to="/profile">
-            {currentUser ? (
-              <img
-                className="rounded-full h-7 w-7 object-cover"
-                src={currentUser.avatar}
-                alt="profile"
-              />
-            ) : (
-              <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">
-                signin
-              </li>
-            )}
-          </Link>
+          <Tooltip
+            className="bg-blue-500"
+            content={currentUser.username}
+            placement="bottom"
+          >
+            <Link to="/profile">
+              {currentUser ? (
+                <img
+                  className="rounded-full h-7 w-7 object-cover"
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              ) : (
+                <li className="text-slate-500 font-medium hover:text-blue- cursor-pointer text-[18px] ml-3">
+                  signin
+                </li>
+              )}
+            </Link>
+          </Tooltip>
         </ul>
 
         {/* Mobile View */}
 
-        <div className="md:hidden flex  justify-start items-center">
+        <div className="md:hidden flex gap-3  justify-start items-center">
+          <div className=" md:hidden ">
+          <Tooltip
+            className="bg-blue-500"
+            content={currentUser.username}
+            placement="bottom"
+          >
+            <Link to="/profile">
+              {currentUser ? (
+                <img
+                  className="rounded-full h-7 w-7 object-cover"
+                  // onClick={() => setToggle(!toggle)}
+                  src={currentUser.avatar}
+                  alt="profile"
+                />
+              ) : (
+                <li
+                  onClick={() => {
+                    // setToggle(!toggle);
+                    setActive(nav.title);
+                  }}
+                  className="text-slate-100 font-medium hover:text-blue- cursor-pointer text-[18px] mb-2 "
+                ></li>
+              )}
+            </Link>
+            </Tooltip>
+          </div>
           <img
             src={toggle ? Close : Menu}
             className="w-[28px] h-[28px] object-contain cursor-pointer z-30"
@@ -131,24 +163,7 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              <Link to="/profile">
-                {currentUser ? (
-                  <img
-                    className="rounded-full h-7 w-7 object-cover"
-                    onClick={() => setToggle(!toggle)}
-                    src={currentUser.avatar}
-                    alt="profile"
-                  />
-                ) : (
-                  <li
-                    onClick={() => {
-                      setToggle(!toggle);
-                      setActive(nav.title);
-                    }}
-                    className="text-slate-100 font-medium hover:text-blue- cursor-pointer text-[18px] mb-2 "
-                  ></li>
-                )}
-              </Link>
+
               <form className="bg-slate-100 p-3 rounded-lg flex items-center justify-between">
                 <input
                   type="text"

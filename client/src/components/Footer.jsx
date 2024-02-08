@@ -5,7 +5,7 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 export default function Footers() {
   return (
     <Footer >
-      <div className="w-full">
+      <div className="w-full ">
         <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
           <div>
             <Footer.Title title="Company" />
@@ -43,7 +43,7 @@ export default function Footers() {
             </Footer.LinkGroup>
           </div>
         </div>
-        <div className="w-full bg-blue-600 px-4 py-6 sm:flex sm:items-center sm:justify-between">
+        <div className="w-full bg-blue-800 px-4 py-6 sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright className='text-gray-200' href="#" by="DreamZone.RealEstate.co™" year={2022} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon className='text-white' href="#" icon={BsFacebook} />

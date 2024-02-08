@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { carouselImage } from '../constants';
+import House2 from '../assets/carousel_image/house_3.jpg'
 
 export default function ImageGrid() {
-  const images = [
-    "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg",
-    "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg",
-  ];
+ 
 
   return (
     <div className="grid grid-cols-2 gap-2">
-      {images.map((image, index) => (
-        <div key={index}>
-          <img className="h-auto max-w-full rounded-lg" src={image} alt={`Image ${index + 1}`} />
-        </div>
+       {carouselImage.map(item => (
+        <img
+          key={item.id} // It's a good practice to include a unique key when mapping arrays in React
+          src={item.image}
+          alt={`House ${item.id}`}
+        />
       ))}
     </div>
+    
   );
 }
