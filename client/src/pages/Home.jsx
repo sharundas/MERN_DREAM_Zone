@@ -21,6 +21,7 @@ export default function Home() {
     const fetchOfferListing = async () => {
       try {
         const res = await fetch("/api/listing/get?offer=true&limit=4");
+        
         const data = await res.json();
         setOfferListings(data);
         fetchRentListing();
@@ -52,6 +53,7 @@ export default function Home() {
     };
     fetchOfferListing();
   }, []);
+
   return (
     <div
       className="flex flex-col  style={{

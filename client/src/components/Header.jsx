@@ -34,7 +34,7 @@ export default function Header() {
   return (
     <nav
       onClick={() => {
-        setActive(nav.title);
+        setActive(navLinks.title);
       }}
       className="w-full flex bg-white border-b-[0.5px] justify-between items-center p-5  top-0 "
     >
