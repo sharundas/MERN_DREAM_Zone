@@ -20,7 +20,7 @@ mongoose
     console.log(err);
   });
 
-
+const __dirname = path.resolve();
 
 const app = express();
 
@@ -43,11 +43,13 @@ app.use('/api/listing', listingRouter);
 app.use('/api/',paymentRouter )
 
 
+app.use(express.static(path.join(__dirname, '/client/dist')));
 
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+})
 
 
 app.use(errorMiddleware);
 
 
-// mern_dream_zone - username
-// uVDkNhaZ3wdAr5lp - pass mongodb
