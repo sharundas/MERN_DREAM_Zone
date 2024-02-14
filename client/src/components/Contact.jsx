@@ -23,10 +23,10 @@ export default function Contact({ listing }) {
   return (
     <>
       {landlord && (
-        <div className="">
-          <p className="">
-            Contact <span>{landlord.username}</span> {""} for {""}{" "}
-            <span>{listing.name.toLowerCase()}</span>
+        <div className="flex flex-col">
+          <p className="py-3">
+            Contact <span className="text-blue-600 font-medium">{landlord.username}</span> {""} for {""}{" "}
+            <span className="text-blue-800 font-semibold">{listing.name.toLowerCase()}</span>
           </p>
           <textarea
             name="message"
@@ -39,7 +39,7 @@ export default function Contact({ listing }) {
           ></textarea>
           <Link
             to={`mailto:${landlord.email}?subject=Regarding ${listing.name}&body=${message}`}
-            className="bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95"
+            className="bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95 mt-4"
           >
             Send Message
           </Link>

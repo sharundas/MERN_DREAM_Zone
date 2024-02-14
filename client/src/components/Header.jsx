@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { navLinks } from "../constants";
 import Close from "../assets/close.svg";
 import Menu from "../assets/menu.svg";
-import SignIn from "../pages/SignIn";
 import { useSelector } from "react-redux";
 import { Button, Tooltip } from "flowbite-react";
 
@@ -27,7 +26,7 @@ export default function Header() {
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const searchTermFromUrl = urlParams.get("searchTerm");
-    if (searchTermFromUrl) {
+    if (searchTermFromUrl && searchTermFromUrl !== searchTerm) {
       setSearchTerm(searchTermFromUrl);
     }
   }, [location.search]);
@@ -83,9 +82,10 @@ export default function Header() {
               </Link>
             </li>
           ))}
+          
           <Tooltip
             className="bg-blue-500"
-            content={currentUser.username}
+           content={currentUser ? currentUser.username : null}
             placement="bottom"
           >
             <Link to="/profile">
@@ -110,7 +110,7 @@ export default function Header() {
           <div className=" md:hidden ">
           <Tooltip
             className="bg-blue-500"
-            content={currentUser.username}
+           
             placement="bottom"
           >
             <Link to="/profile">

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ListingItem from "../components/ListingItems";
+import { IoIosArrowBack } from 'react-icons/io';
+
 
 export default function Search() {
   const navigate = useNavigate();
@@ -227,6 +229,10 @@ export default function Search() {
           <button className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95">
             Search
           </button>
+          <Link to='/' className="flex items-center justify-center hover:underline">
+          <IoIosArrowBack />
+           Back to Home
+          </Link>
         </form>
       </div>
       <div className="flex-1">

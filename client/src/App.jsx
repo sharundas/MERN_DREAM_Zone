@@ -8,7 +8,6 @@ import Header from './components/Header';
 import News from './pages/News';
 import PrivateRoute from './components/PrivateRoute'
 import CreateListing from './pages/CreateListing';
-import Test from './pages/test';
 
 import UpdateListing from './pages/UpdateListing';
 import Listing from './pages/Listing';
@@ -42,7 +41,7 @@ function App() {
 
         </Route>
         <Route path='/news' element={<News />} />
-        <Route path='/test' element={<Test />} />
+        
 
         </Routes>
         
